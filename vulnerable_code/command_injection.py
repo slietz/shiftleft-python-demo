@@ -3,6 +3,15 @@ from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
+
+app.config.update(
+    SESSION_COOKIE_SECURE=True,
+    SESSION_COOKIE_HTTPONLY=True,
+    SESSION_COOKIE_SAMESITE='Lax',
+)
+
+response.set_cookie('username', 'flask', secure=True, httponly=True, samesite='Lax')
+
 @app.route('/')
 def index():
     with open('menu.txt','r') as f:
